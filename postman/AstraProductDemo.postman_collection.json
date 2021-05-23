@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "41819fb1-6d13-4816-8c68-dd7cfe6118cf",
+		"name": "AstraProductDemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "REST API",
+			"item": [
+				{
+					"name": "Create table",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-cassandra-token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"rest_example_products\",\"ifNotExists\":true,\"columnDefinitions\": [ \n    {\"name\":\"id\",\"typeDefinition\":\"uuid\",\"static\":false}, \n    {\"name\":\"productname\",\"typeDefinition\":\"text\",\"static\":false}, \n    {\"name\":\"description\",\"typeDefinition\":\"text\",\"static\":false}, \n    {\"name\":\"price\",\"typeDefinition\":\"decimal\",\"static\":false}, \n    {\"name\":\"created\",\"typeDefinition\":\"timestamp\",\"static\":false}\n    ],\"primaryKey\": {\"partitionKey\":[\"id\"]},\"tableOptions\":{\"defaultTimeToLive\":0}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v1/keyspaces/{{astra_db_keyspace}}/tables",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1",
+								"keyspaces",
+								"{{astra_db_keyspace}}",
+								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Row",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-cassandra-token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"columns\":[\n    {\"name\":\"id\",\"value\":\"e9b6c02d-0604-4bab-a3ea-6a7984654631\"},\n    {\"name\":\"productname\",\"value\":\"Heavy Lift Arms\"},\n    {\"name\":\"description\",\"value\":\"Heavy lift arms capable of lifting 1,250 lbs of weight per arm. Sold as a set.\"},\n    {\"name\":\"price\",\"value\":\"4199.99\"},\n    {\"name\":\"created\",\"value\":\"2019-01-10T09:48:31.020Z\"}]}"
+						},
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v1/keyspaces/{{astra_db_keyspace}}/tables/rest_example_products/rows",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1",
+								"keyspaces",
+								"{{astra_db_keyspace}}",
+								"tables",
+								"rest_example_products",
+								"rows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rows",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-cassandra-token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v1/keyspaces/{{astra_db_keyspace}}/tables/rest_example_products/rows/e9b6c02d-0604-4bab-a3ea-6a7984654631",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1",
+								"keyspaces",
+								"{{astra_db_keyspace}}",
+								"tables",
+								"rest_example_products",
+								"rows",
+								"e9b6c02d-0604-4bab-a3ea-6a7984654631"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Row",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-cassandra-token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"columns\":[\n    {\"name\":\"id\",\"value\":\"e9b6c02d-0604-4bab-a3ea-6a7984654631\"},\n    {\"name\":\"productname\",\"value\":\"Heavy Lift Arms\"},\n    {\"name\":\"description\",\"value\":\"Heavy lift arms capable of lifting 1,250 lbs of weight per arm. Sold as a set.\"},\n    {\"name\":\"price\",\"value\":\"9999.99\"},\n    {\"name\":\"created\",\"value\":\"2019-01-10T09:48:31.020Z\"}]}"
+						},
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v1/keyspaces/{{astra_db_keyspace}}/tables/rest_example_products/rows",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1",
+								"keyspaces",
+								"{{astra_db_keyspace}}",
+								"tables",
+								"rest_example_products",
+								"rows"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Row",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-cassandra-token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v1/keyspaces/{{astra_db_keyspace}}/tables/rest_example_products/rows/e9b6c02d-0604-4bab-a3ea-6a7984654631",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1",
+								"keyspaces",
+								"{{astra_db_keyspace}}",
+								"tables",
+								"rest_example_products",
+								"rows",
+								"e9b6c02d-0604-4bab-a3ea-6a7984654631"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "These simple example leverage the same content from the online Astra documentation under the connect tab"
+		},
+		{
+			"name": "Doc API",
+			"item": [
+				{
+					"name": "CreateDoc",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Cassandra-Token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Specify doc name\",\n    \"other\": \"this is doc1\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{astra_db_keyspace}}/collections/hello_docs",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v2",
+								"namespaces",
+								"{{astra_db_keyspace}}",
+								"collections",
+								"hello_docs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateNamedDoc",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-cassandra-token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Specify doc name\",\n    \"other\": \"this is doc2\"\n  }"
+						},
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{astra_db_keyspace}}/collections/hello_docs/this",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v2",
+								"namespaces",
+								"{{astra_db_keyspace}}",
+								"collections",
+								"hello_docs",
+								"this"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ReadDoc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Cassandra-Token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{astra_db_keyspace}}/collections/hello_docs/this",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v2",
+								"namespaces",
+								"{{astra_db_keyspace}}",
+								"collections",
+								"hello_docs",
+								"this"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Document",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-cassandra-token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"other\": \"This is starting to make sense.\"\n  }"
+						},
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{astra_db_keyspace}}/collections/hello_docs/this",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v2",
+								"namespaces",
+								"{{astra_db_keyspace}}",
+								"collections",
+								"hello_docs",
+								"this"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Doc",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-cassandra-token",
+								"value": "{{astra_db_application_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://{{astra_db_id}}-{{astra_db_region}}.apps.astra.datastax.com/api/rest/v2/namespaces/{{astra_db_keyspace}}/collections/hello_docs/this",
+							"protocol": "https",
+							"host": [
+								"{{astra_db_id}}-{{astra_db_region}}",
+								"apps",
+								"astra",
+								"datastax",
+								"com"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v2",
+								"namespaces",
+								"{{astra_db_keyspace}}",
+								"collections",
+								"hello_docs",
+								"this"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "astra_db_id",
+			"value": "ffb696a6-31f3-4e32-9ba1-73e3a4eb8d67"
+		},
+		{
+			"key": "astra_db_region",
+			"value": "us-east-1"
+		},
+		{
+			"key": "astra_db_keyspace",
+			"value": "newDemo"
+		},
+		{
+			"key": "astra_db_application_token",
+			"value": "AstraCS:pUElPTIgImLiMNaZIMlUMkZL:3f12db0e0e5a310eee35b605acab4a740cf8117c7392a63177c5443646b34a5a"
+		}
+	]
+}
