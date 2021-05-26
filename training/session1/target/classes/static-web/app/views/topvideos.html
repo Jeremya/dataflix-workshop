@@ -1,0 +1,83 @@
+<div class="container-fluid" ng-controller="TopVideosController" ng-init="queryField='all'">
+    <h2>Top Videos</h2>
+    <div class="row">
+        <div class="col-lg-6">Search by genre and years:</div>
+    </div>
+    <div class="row top-buffer">
+        <form class="col-lg-6" ng-submit="getVideosByGenre(genre, mindate, maxdate)">
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <select  class="form-control" id="genre" name="genre"  ng-model="genre" style="width: 130px;">
+                        <option value="" disabled selected hidden>Genre</option>
+                        <option value="Action">Action</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Documentary">Documentary</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Foreign">Foreign</option>
+                        <option value="Family">Family</option>
+                        <option value="History">History</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Music">Music</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="TV Movie">TV Movie</option>
+                        <option value="War">War</option>
+                        <option value="Western">Western</option>
+                    </select>
+                    &nbsp;
+                    <p>Between years:</p>
+                    <select  class="form-control" id="mindate" name="mindate"  ng-model="mindate" style="width: 130px;">
+                        <option value="1930">1930</option>
+                        <option value="1940">1940</option>
+                        <option value="1950">1950</option>
+                        <option value="1960">1960</option>
+                        <option value="1980">1970</option>
+                        <option value="1980">1980</option>
+                        <option value="1990">1990</option>
+                        <option value="2000">2000</option>
+                        <option value="2010">2010</option>
+                    </select>
+                    <select  class="form-control" id="maxdate" name="maxdate"  ng-model="maxdate" style="width: 130px;">
+                        <option value="1930">1930</option>
+                        <option value="1940">1940</option>
+                        <option value="1950">1950</option>
+                        <option value="1960">1960</option>
+                        <option value="1980">1970</option>
+                        <option value="1980">1980</option>
+                        <option value="1990">1990</option>
+                        <option value="2000">2000</option>
+                        <option value="2010">2010</option>
+                    </select>
+                    &nbsp;
+                    <input class="btn btn-primary col-sm-2" type="submit" id="submitGenres" value="Go!">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row"></div>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Release Year</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="video in videos | orderBy:releaseYear">
+            <td>{{ video.title }}</td>
+            <td>{{ video.genre }}</td>
+            <td>{{ video.releaseYear }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <script src="scripts/killrvideo.js"></script>
+
+</div>

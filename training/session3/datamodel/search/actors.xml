@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema name="autoSolrSchema" version="1.5">
+<types>
+<fieldType class="org.apache.solr.schema.StrField" name="StrField"/>
+<fieldType class="org.apache.solr.schema.TrieIntField" name="TrieIntField"/>
+<fieldType class="org.apache.solr.schema.UUIDField" name="UUIDField"/>
+</types>
+<fields>
+<field indexed="true" multiValued="false" name="actor_name" stored="true" type="StrField"/>
+<field indexed="true" multiValued="true" name="movies" stored="true" type="UUIDField"/>
+<field indexed="true" multiValued="true" name="videos" stored="true" type="UUIDField"/>
+<dynamicField indexed="true" multiValued="false" name="appearances_*" stored="true" type="TrieIntField"/>
+</fields>
+<uniqueKey>actor_name</uniqueKey>
+</schema>
+

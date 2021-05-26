@@ -1,0 +1,16 @@
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/testutilities/AbstractDSETest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/dao/cassandra/BatchStatementVideoDAOTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/services/VideoTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/dao/cassandra/MapperVideoDAOTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/testutilities/AbstractVideoTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/testutilities/TestData.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/services/UserCreateReadTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/dao/cassandra/UserSessionDAOTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/dao/cassandra/UserDAOAddressTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/dao/cassandra/AccessorVideoDAOTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/dao/cassandra/PreparedStatementVideoDAOTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/dao/cassandra/QueryBuilderVideoDAOTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/dao/cassandra/AsyncQueryVideoDAOTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/util/CassandraSessionTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/services/UserAuthenticationTest.java
+/home/ubuntu/workspace/session1/src/test/java/com/datastax/training/killrvideo/dao/cassandra/UserDAOTest.java
