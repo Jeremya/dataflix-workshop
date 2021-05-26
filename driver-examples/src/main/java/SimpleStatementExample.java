@@ -41,6 +41,7 @@ public class SimpleStatementExample {
                     .addPositionalValue("Hello")
                     .build());
             System.out.println("+ Messages '"+ id1 + "' has been created.");
+
             UUID id2 = Uuids.timeBased();
             cqlSession.execute(SimpleStatement.builder(
                     "INSERT INTO messages (user_from, created, user_to, message) "
@@ -66,7 +67,6 @@ public class SimpleStatementExample {
                         row.getString("user_to") + "'");
             }
             System.out.println("[OK] - End of Demo");
-
         }
 
     }

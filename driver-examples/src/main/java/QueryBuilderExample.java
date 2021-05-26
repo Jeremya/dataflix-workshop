@@ -9,7 +9,6 @@ import com.datastax.oss.driver.api.querybuilder.SchemaBuilder;
 import java.util.UUID;
 
 import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.*;
-import static com.datastax.oss.driver.api.querybuilder.QueryBuilder.literal;
 
 public class QueryBuilderExample {
     public static void main(String[] args) {
@@ -58,10 +57,7 @@ public class QueryBuilderExample {
             // Step4 - Read Messages
             // ---------------------------------------------
             System.out.println("+ Reading records from table:");
-             cqlSession.execute(SimpleStatement.builder(
-                    "SELECT * FROM messages "
-                            + "WHERE user_from = ?")
-                    .addPositionalValue("Astra").build());
+
             ResultSet rs = cqlSession.execute(selectFrom("messages")
                     .all()
                     .whereColumn("user_from")

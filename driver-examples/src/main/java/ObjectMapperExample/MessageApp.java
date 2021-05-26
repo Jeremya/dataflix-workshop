@@ -2,8 +2,6 @@ package ObjectMapperExample;
 
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.uuid.Uuids;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MessageApp {
 
@@ -16,7 +14,7 @@ public class MessageApp {
 
             MessageDao messageDao = mapper.messageDao();
 
-            Messages message = new Messages("Astra", Uuids.timeBased(), "You", "Hello");
+            Messages message = new Messages("Astra", Uuids.timeBased(), "You", "Hello Object Mapper");
 
             messageDao.save(message);
 
